@@ -1,0 +1,6 @@
+{
+  "discord_webhook_url": "https://discord.com/api/webhooks/***",
+  "discord_embed_color": "000000",
+  "telegram_bot_token": "xxxxxxxxxx:xxxxxxxxxx",
+  "telegram_chat_ids": [11111111, 22222222]
+}
