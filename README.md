@@ -135,11 +135,8 @@ Project Link: [https://github.com/TrainerFromHoenn/autoraid](https://github.com/
 
 ## Credits
 
-<ol>
-    <li>[olliz0r](https://github.com/olliz0r/) for [Sysbot-base](https://github.com/olliz0r/sys-botbase), on which this program relies on
-    </li>
-    <li>[kwsch](https://github.com/kwsch), [Lusamine](https://github.com/Lusamine), [Archit Date](https://github.com/architdate), [LegoFigure11](https://github.com/LegoFigure11) and all those who contributed to [Sysbot.NET](https://github.com/kwsch/SysBot.NET) and [PkHex](https://github.com/kwsch/PKHeX) for all the ram byte offsets and pointer that make this bot possible. </li>
-</ol>
+- [olliz0r](https://github.com/olliz0r/) for [Sysbot-base](https://github.com/olliz0r/sys-botbase), on which this program relies on
+- [kwsch](https://github.com/kwsch), [Lusamine](https://github.com/Lusamine), [Archit Date](https://github.com/architdate), [LegoFigure11](https://github.com/LegoFigure11) and all those who contributed to [Sysbot.NET](https://github.com/kwsch/SysBot.NET) and [PkHex](https://github.com/kwsch/PKHeX) for all the ram byte offsets and pointer that make this bot possible.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
