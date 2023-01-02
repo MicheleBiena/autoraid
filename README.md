@@ -28,12 +28,12 @@
   <p align="center">
     Python bot to auto-host Pokémon Scarlet and Violet Tera Raids, based on sysbot-base by olliz0r.
     <br />
-    <a href="https://github.com/TrainerFromHoenn/autoraid"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/MicheleBiena/autoraid"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TrainerFromHoenn/autoraid/issues">Report Bug</a>
+    <a href="https://github.com/MicheleBiena/autoraid/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TrainerFromHoenn/autoraid/issues">Request Feature</a>
+    <a href="https://github.com/MicheleBiena/autoraid/issues">Request Feature</a>
   </p>
 </div>
 
@@ -84,15 +84,18 @@ https://www.python.org/
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/TrainerFromHoenn/autoraid.git
+   git clone https://github.com/MicheleBiena/autoraid.git
    ```
 2. Compile the connection_info.json file
    ```json
    {
+     "switch-ip": "192.168.0.0",
      "discord_webhook_url": "https://discord.com/api/webhooks/***",
      "discord_embed_color": "000000",
      "telegram_bot_token": "xxxxxxxxxx:xxxxxxxxxx",
-     "telegram_chat_ids": [11111111, 22222222]
+     "telegram_preferential_ids": [33333333],
+     "telegram_chat_ids": [11111111, 22222222],
+     "_unused_ids": [44444444, 55555555]
    }
    ```
 3. Add your installation path on routines.py
@@ -128,6 +131,17 @@ https://www.python.org/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- ROADMAP -->
+
+## Roadmap
+
+- [x] Priority Queues
+- [ ] GUI
+
+See the [open issues](https://github.com/MicheleBiena/autoraid/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- CONTRIBUTING -->
 
 ## Contributing
@@ -151,7 +165,7 @@ Don't forget to give the project a star! Thanks again!
 
 michelebiena@gmail.com
 
-Project Link: [https://github.com/TrainerFromHoenn/autoraid](https://github.com/TrainerFromHoenn/autoraid)
+Project Link: [https://github.com/MicheleBiena/autoraid](https://github.com/MicheleBiena/autoraid)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -169,16 +183,16 @@ Project Link: [https://github.com/TrainerFromHoenn/autoraid](https://github.com/
 [haskell-gloss]: https://img.shields.io/badge/Haskell--Gloss-Gloss-blue
 [haskell-url]: https://www.haskell.org/
 [gloss-url]: https://hackage.haskell.org/package/gloss
-[contributors-shield]: https://img.shields.io/github/contributors/TrainerFromHoenn/autoraid.svg?style=for-the-badge
-[contributors-url]: https://github.com/TrainerFromHoenn/autoraid/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TrainerFromHoenn/autoraid.svg?style=for-the-badge
-[forks-url]: https://github.com/TrainerFromHoenn/autoraid/network/members
-[stars-shield]: https://img.shields.io/github/stars/TrainerFromHoenn/autoraid.svg?style=for-the-badge
-[stars-url]: https://github.com/TrainerFromHoenn/autoraid/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TrainerFromHoenn/autoraid.svg?style=for-the-badge
-[issues-url]: https://github.com/TrainerFromHoenn/autoraid/issues
-[license-shield]: https://img.shields.io/github/license/TrainerFromHoenn/autoraid.svg?style=for-the-badge
-[license-url]: https://github.com/TrainerFromHoenn/autoraid/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/MicheleBiena/autoraid.svg?style=for-the-badge
+[contributors-url]: https://github.com/MicheleBiena/autoraid/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/MicheleBiena/autoraid.svg?style=for-the-badge
+[forks-url]: https://github.com/MicheleBiena/autoraid/network/members
+[stars-shield]: https://img.shields.io/github/stars/MicheleBiena/autoraid.svg?style=for-the-badge
+[stars-url]: https://github.com/MicheleBiena/autoraid/stargazers
+[issues-shield]: https://img.shields.io/github/issues/MicheleBiena/autoraid.svg?style=for-the-badge
+[issues-url]: https://github.com/MicheleBiena/autoraid/issues
+[license-shield]: https://img.shields.io/github/license/MicheleBiena/autoraid.svg?style=for-the-badge
+[license-url]: https://github.com/MicheleBiena/autoraid/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

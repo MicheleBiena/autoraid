@@ -1,10 +1,14 @@
 import socket
 import routines as r
 import time
+import json
+
+with open ("connection_info.json") as f:
+    config = json.load(f)
 
 # CONNECTION
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("192.168.1.3", 6000))
+s.connect((config["switch-ip"], 6000))
 
 # RAID INFO
 raid_pokemon = input('Pokémon da Hostare: ')

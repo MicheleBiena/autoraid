@@ -29,7 +29,7 @@ def sendCommand(s, content):
     s.sendall(content.encode())
 
 def sleepfor(seconds):
-    print("Aspetto " + str(seconds) + " secondi.")
+    # print("Aspetto " + str(seconds) + " secondi.")
     sleep(seconds)
 
 # RAM CHECK
@@ -55,6 +55,7 @@ def screenshot(s):
     image.save((base_address + 'image.jpg'), 'JPEG')
 
 def send_discord(raid_pokemon, extra_info):
+    print("Sending password to discord webhook...")
     with open(base_address + 'image.jpg', "rb") as f:
         webhook.add_file(file=f.read(), filename="image.jpg")
 
@@ -67,9 +68,18 @@ def send_discord(raid_pokemon, extra_info):
     webhook.remove_embeds()
 
 def send_image(file_path, details):
+    if len(config['telegram_preferential_ids']) > 0:
+        print("Sending password to preferential contacts...")
+        with open(file_path, 'rb') as f:
+            for pref in config['telegram_preferential_ids']:
+                bot.send_photo(pref, f, caption=details)
+        sleep(15)
     with open(file_path, 'rb') as f:
+        print("Sending password to telegram chats...")
         for id in config['telegram_chat_ids']:
             bot.send_photo(id, f, caption=details)
+    
+        
     
 
 def send_telegram(raid_pokemon, extra_info):
@@ -168,6 +178,7 @@ def setup_raid(s, alert_data):
     while readyForRaid is not True:
         sleep(0.5)
         readyForRaid = isConnected(s) and isOnOverworld(s)
+    sleep(2)
     click(s, "A") # entro nel raid
     sleep(2)
     click(s, "A") # affronta in gruppo
@@ -176,7 +187,7 @@ def setup_raid(s, alert_data):
     sleep(6) # per uno screenshot adatto
     screenshot(s)
     send_alerts(alert_data)
-    sleep(120)
+    sleep(60)
     print("Starting Raid")
     click(s, "A")
     sleep(3)
