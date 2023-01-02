@@ -33,4 +33,3 @@ while True:
     r.quitGame(s)
     r.enterGame(s)
 
-

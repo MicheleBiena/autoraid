@@ -1,6 +1,6 @@
 {
   "discord_webhook_url": "",
-  "discord_embed_color": "000000",
+  "discord_embed_color": "",
   "telegram_bot_token": "",
   "telegram_chat_ids": []
 }

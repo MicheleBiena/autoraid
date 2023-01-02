@@ -64,7 +64,7 @@ def send_discord(raid_pokemon, extra_info):
         embed.add_embed_field(name='Informazioni aggiuntive', value=extra_info)
     webhook.add_embed(embed)
     response = webhook.execute()
-    print(response)
+    webhook.remove_embeds()
 
 def send_image(file_path, details):
     with open(file_path, 'rb') as f:
@@ -95,13 +95,13 @@ def send_alerts(alert_data):
 def isOnOverworld(s):
     checkPointer(s, pointers['overworldPointer'], 1)
     onOverworld = s.recv(3)
-    print(onOverworld.decode())
+    # print(onOverworld.decode())
     return onOverworld[:-1].decode() == "11"
 
 def isConnected(s):
     checkPointer(s, pointers['isConnectedPointer'], 1)
     onOverworld = s.recv(3)
-    print(onOverworld.decode())
+    # print(onOverworld.decode())
     return onOverworld[:-1].decode() == "01"
 
 def click(s, button):
@@ -200,4 +200,4 @@ def raid_execution(s):
         inRaid = not isOnOverworld(s)
         sleep(5)
     print("Raid Finished!") 
-    sleep(2) 
+    sleep(5) 

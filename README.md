@@ -95,7 +95,14 @@ https://www.python.org/
      "telegram_chat_ids": [11111111, 22222222]
    }
    ```
-3. After setting up a raid on your switch (See Usage below) run autoraid.py
+3. Add your installation path on routines.py
+
+   ```python
+   # IMPORTANT: CHANGE THIS!
+   base_address = "C:\\autoraid\\autoraid\\"
+   ```
+
+4. After setting up a raid on your switch (See Usage below) run autoraid.py
    ```sh
    python ./autoraid.py
    ```
