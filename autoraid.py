@@ -3,7 +3,9 @@ import routines as r
 import time
 import json
 
-with open ("connection_info.json") as f:
+base_folder = r.base_address
+
+with open (base_folder + "connection_info.json") as f:
     config = json.load(f)
 
 # CONNECTION
@@ -11,15 +13,15 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((config["switch-ip"], 6000))
 
 # RAID INFO
-raid_pokemon = input('Pokémon da Hostare: ')
-extra_info = input('Info aggiuntive (premi invio per non aggiungere): ')
+raid_pokemon = input('Raid Pokémon: ')
+extra_info = input('Extra Info (press Enter to skip): ')
 options = ["t", "d", ""]
 while True: 
-    channel = input('Vuoi inviare notifiche su telegram o discord (t/d - premi invio per inviare a entrambi): ')
+    channel = input('Do you want to send Discord or Telegram alerts? (t/d - press Enter for both): ')
     if channel in options:
         break
     else:
-        print("Opzione invalida.")
+        print("Invalid option. Try again")
 
 alert_data = {
     "channel" : channel,
@@ -27,13 +29,19 @@ alert_data = {
     "extra_info" : extra_info
 }
 
+hosted_raids = 0
 
 # MAIN LOOP
 time.sleep(1.5)
-while True:
-    r.connect(s)
-    r.setup_raid(s, alert_data)
-    r.raid_execution(s)
-    r.quitGame(s)
-    r.enterGame(s)
+try:
+    while True:
+        r.connect(s)
+        r.setup_raid(s, alert_data)
+        r.raid_execution(s)
+        r.quitGame(s)
+        hosted_raids = hosted_raids + 1
+        r.enterGame(s)
+except KeyboardInterrupt:
+    r.send_finished(str(hosted_raids), alert_data)
+
 

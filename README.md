@@ -63,7 +63,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Creato con
+### Built with
 
 - [![Python][python.org]][python-url]
 

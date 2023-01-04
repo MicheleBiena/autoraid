@@ -18,7 +18,7 @@ with open(base_address + 'ram_pointers.json') as file:
 
 # DISCORD WEBHOOK SETUP
 webhook = DiscordWebhook(config['discord_webhook_url'])
-embed = DiscordEmbed(title='DollyAutoRaid', description='Tera Raid in corso', color=config['discord_embed_color'])
+embed = DiscordEmbed(title='DollyAutoRaid', description='Tera raid hosting', color=config['discord_embed_color'])
 
 # TELEGRAM SETUP
 bot = telebot.TeleBot(config['telegram_bot_token'])
@@ -62,7 +62,7 @@ def send_discord(raid_pokemon, extra_info):
     embed.set_title(raid_pokemon)
     embed.set_image(url="attachment://image.jpg")
     if len(extra_info) > 0: 
-        embed.add_embed_field(name='Informazioni aggiuntive', value=extra_info)
+        embed.add_embed_field(name='Extra Info', value=extra_info)
     webhook.add_embed(embed)
     response = webhook.execute()
     webhook.remove_embeds()
@@ -70,8 +70,8 @@ def send_discord(raid_pokemon, extra_info):
 def send_image(file_path, details):
     if len(config['telegram_preferential_ids']) > 0:
         print("Sending password to preferential contacts...")
-        with open(file_path, 'rb') as f:
-            for pref in config['telegram_preferential_ids']:
+        for pref in config['telegram_preferential_ids']:
+            with open(file_path, 'rb') as f:
                 bot.send_photo(pref, f, caption=details)
         sleep(15)
     with open(file_path, 'rb') as f:
@@ -79,9 +79,6 @@ def send_image(file_path, details):
         for id in config['telegram_chat_ids']:
             bot.send_photo(id, f, caption=details)
     
-        
-    
-
 def send_telegram(raid_pokemon, extra_info):
     caption = "Tera Raid in corso\nPokémon: " + raid_pokemon
     if len(extra_info) > 0:
@@ -100,6 +97,38 @@ def send_alerts(alert_data):
     else:
         send_telegram(raid_pokemon, extra_info)
         send_discord(raid_pokemon, extra_info)
+
+def send_telegram_finished(raid_pokemon, message):
+    caption = "Finished Auto-Hosting for: " + raid_pokemon + "\nNumber of raids completed: " + message
+    send_text(caption)
+
+def send_discord_finished(raid_pokemon, message):
+    embed.set_title("Stopped")
+    embed.set_description("Finished Auto-Hosting for: " + raid_pokemon)
+    embed.add_embed_field(name='Number of raids completed: ', value=message)
+    webhook.add_embed(embed)
+    response = webhook.execute()
+    webhook.remove_embeds()
+
+def send_text(caption):
+    if len(config['telegram_preferential_ids']) > 0:
+        for pref in config['telegram_preferential_ids']:
+            bot.send_message(pref, caption)
+    for id in config['telegram_chat_ids']:
+        bot.send_message(id, caption)
+
+def send_finished(message, alert_data):
+    channels = {
+        "t": send_telegram_finished,
+        "d": send_discord_finished
+    }
+    channel, raid_pokemon, extra_info = [value for key, value in alert_data.items()]
+
+    if channel in channels:
+        channels[channel](raid_pokemon, message)
+    else:
+        send_telegram_finished(raid_pokemon, message)
+        send_discord_finished(raid_pokemon, message)
 
 # ALL COMMANDS
 def isOnOverworld(s):
@@ -177,18 +206,20 @@ def setup_raid(s, alert_data):
     readyForRaid = False
     while readyForRaid is not True:
         sleep(0.5)
+        click(s, "B")
         readyForRaid = isConnected(s) and isOnOverworld(s)
     sleep(2)
     click(s, "A") # entro nel raid
-    sleep(2)
+    sleep(3)
     click(s, "A") # affronta in gruppo
     sleep(2)
     click(s, "A") # solo chi conosce la password
-    sleep(6) # per uno screenshot adatto
+    sleep(10) # per uno screenshot adatto
     screenshot(s)
     send_alerts(alert_data)
     sleep(60)
     print("Starting Raid")
+    send_text("Starting Raid!")
     click(s, "A")
     sleep(3)
     click(s, "A")
@@ -208,7 +239,20 @@ def raid_execution(s):
         sleep(0.2)
         click(s, "A")
         sleep(1.3) # Mashing A-button
+        click(s, "B")
+        sleep(0.2)
+        click(s, "B")
+        sleep(1.3)
+        click(s, "B")
+        sleep(0.2)
+        click(s, "B")
+        sleep(1.3) 
+        click(s, "B")
+        sleep(0.2)
+        click(s, "B") # Mashing B-button (in case the raid is lost it goes back to overworld)
+        sleep(1.3)
         inRaid = not isOnOverworld(s)
         sleep(5)
     print("Raid Finished!") 
+    send_text("Raid finished, restarting the game...")
     sleep(5) 
