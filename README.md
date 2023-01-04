@@ -87,6 +87,7 @@ https://www.python.org/
    git clone https://github.com/MicheleBiena/autoraid.git
    ```
 2. Compile the connection_info.json file
+
    ```json
    {
      "switch-ip": "192.168.0.0",
@@ -98,14 +99,8 @@ https://www.python.org/
      "_unused_ids": [44444444, 55555555]
    }
    ```
-3. Add your installation path on routines.py
 
-   ```python
-   # IMPORTANT: CHANGE THIS!
-   base_address = "C:\\autoraid\\autoraid\\"
-   ```
-
-4. After setting up a raid on your switch (See Usage below) run autoraid.py
+3. After setting up a raid on your switch (See Usage below) run autoraid.py
    ```sh
    python ./autoraid.py
    ```
@@ -138,7 +133,7 @@ https://www.python.org/
 ### Telegram Integration
 
 - [x] Priority Queue
-- [ ] Snitch Mode
+- [x] Snitch Mode
 
 ### Aesthetic
 

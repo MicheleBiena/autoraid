@@ -1,5 +1,5 @@
 {
-  "switch-ip": "192.168.0.0",
+  "switch-ip": "",
   "discord_webhook_url": "",
   "discord_embed_color": "",
   "telegram_bot_token": "",
