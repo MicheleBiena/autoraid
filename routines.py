@@ -61,9 +61,9 @@ def send_discord(raid_pokemon, extra_info):
 
     embed.set_title(raid_pokemon)
     embed.set_image(url="attachment://image.jpg")
-    if len(extra_info) > 0: 
-        embed.add_embed_field(name='Extra Info', value=extra_info)
     webhook.add_embed(embed)
+    if len(extra_info) > 0: 
+        add_field_to_embed(webhook, 'Extra info', extra_info)
     response = webhook.execute()
     webhook.remove_embeds()
 
@@ -80,9 +80,9 @@ def send_image(file_path, details):
             bot.send_photo(id, f, caption=details)
     
 def send_telegram(raid_pokemon, extra_info):
-    caption = "Tera Raid in corso\nPokémon: " + raid_pokemon
+    caption = "Tera Raid hosting\nPokémon: " + raid_pokemon
     if len(extra_info) > 0:
-        caption += "\nInfo Aggiuntive: " + extra_info
+        caption += "\nExtra Info: " + extra_info
     send_image(base_address + 'image.jpg', caption)
 
 def send_alerts(alert_data):
@@ -105,6 +105,7 @@ def send_telegram_finished(raid_pokemon, message):
 def send_discord_finished(raid_pokemon, message):
     embed.set_title("Stopped")
     embed.set_description("Finished Auto-Hosting for: " + raid_pokemon)
+    remove_field_from_webhook(webhook, 'Extra Info')
     embed.add_embed_field(name='Number of raids completed: ', value=message)
     webhook.add_embed(embed)
     response = webhook.execute()
@@ -129,6 +130,23 @@ def send_finished(message, alert_data):
     else:
         send_telegram_finished(raid_pokemon, message)
         send_discord_finished(raid_pokemon, message)
+
+def add_field_to_embed(webhook, field_name, field_value):
+    field_exists = False
+    for field in webhook.embeds[0].fields:
+        if field.name == field_name:
+            field_exists = True
+            break
+    if not field_exists:
+        webhook.add_field(name=field_name, value=field_value)
+
+def remove_field_from_webhook(webhook, field_name):
+    # Loop through the fields in the webhook
+    for field in webhook.embeds[0].fields:
+        # If the field name matches the field we want to remove, remove it
+        if field.name == field_name:
+            webhook.remove_field(field)
+            break
 
 # ALL COMMANDS
 def isOnOverworld(s):
@@ -220,6 +238,8 @@ def setup_raid(s, alert_data):
     sleep(60)
     print("Starting Raid")
     send_text("Starting Raid!")
+    screenshot(s)
+    send_alerts(alert_data)
     click(s, "A")
     sleep(3)
     click(s, "A")

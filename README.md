@@ -135,7 +135,13 @@ https://www.python.org/
 
 ## Roadmap
 
-- [x] Priority Queues
+# Telegram Integration
+
+- [x] Priority Queue
+- [ ] Snitch Mode
+
+# Aesthetic
+
 - [ ] GUI
 
 See the [open issues](https://github.com/MicheleBiena/autoraid/issues) for a full list of proposed features (and known issues).
