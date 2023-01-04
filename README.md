@@ -135,12 +135,12 @@ https://www.python.org/
 
 ## Roadmap
 
-# Telegram Integration
+### Telegram Integration
 
 - [x] Priority Queue
 - [ ] Snitch Mode
 
-# Aesthetic
+### Aesthetic
 
 - [ ] GUI
 
