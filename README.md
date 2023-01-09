@@ -23,7 +23,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/MicheleBiena/autoraid">
-    <img src="program.png" alt="Program" width="300" height="160">
+    <img src="program.png" alt="Program" width="1200" height="640">
   </a>
 <h3 align="center">AUTORAID</h3>
 
