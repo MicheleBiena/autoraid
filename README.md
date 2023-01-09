@@ -119,7 +119,7 @@ https://www.python.org/
    ```
 3. After setting up a raid on your switch (See Usage below) you can run autoraid_gui.py
    ```sh
-   python ./autoraid_gui.py
+   python .\Autoraid.Windows\autoraid_gui.py
    ```
 4. Alternatively, you can build it using [pyinstaller](https://pypi.org/project/pyinstaller/) or [auto-py-to-exe](https://pypi.org/project/auto-py-to-exe/) with the --onedir option (--onefile is not supported for some of the libraries used). Remember to add CustomTkinter as a dependency, follow this [guide](https://github.com/TomSchimansky/CustomTkinter/wiki/Packaging) to see how to do it.
 
