@@ -1,3 +1,11 @@
-*.jpg
+*.spec
 /__pycache__
+/Auotoraid.Windows/Core/__pycache__
+/Auotoraid.Windows/Gui/__pycache__
 /private
+/dist
+/.vscode
+/autoraid
+/Logs
+*.zip
+*.bat

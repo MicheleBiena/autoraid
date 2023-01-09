@@ -1,9 +1,0 @@
-{
-  "switch-ip": "",
-  "discord_webhook_url": "",
-  "discord_embed_color": "",
-  "telegram_bot_token": "",
-  "telegram_preferential_ids": [],
-  "telegram_chat_ids": [],
-  "_unused_ids": []
-}

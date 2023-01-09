@@ -1,0 +1,6 @@
+python-telegram-handler
+pyTelegramBotAPI
+discord-webhook
+Pillow
+tk
+customtkinter

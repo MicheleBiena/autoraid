@@ -22,7 +22,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-
+  <a href="https://github.com/MicheleBiena/autoraid">
+    <img src="program.png" alt="Program" width="300" height="160">
+  </a>
 <h3 align="center">AUTORAID</h3>
 
   <p align="center">
@@ -95,30 +97,31 @@ Install sysbot-base on your switch, you can find it on https://github.com/olliz0
 Install Python
 https://www.python.org/
 
-### Installation
+### Installing
+
+1. Download the .zip file from the release page.
+
+2. Run install.bat to install the dependencies. If you get an error you may want to add pip to your environment variables.
+
+3. Run autoraid.exe
+
+4. Compile the settings, save and restart the program to make them valid.
+
+### Building
 
 1. Clone the repo
    ```sh
    git clone https://github.com/MicheleBiena/autoraid.git
    ```
-2. Compile the connection_info.json file
-
-   ```json
-   {
-     "switch-ip": "192.168.0.0",
-     "discord_webhook_url": "https://discord.com/api/webhooks/***",
-     "discord_embed_color": "000000",
-     "telegram_bot_token": "xxxxxxxxxx:xxxxxxxxxx",
-     "telegram_preferential_ids": [33333333],
-     "telegram_chat_ids": [11111111, 22222222],
-     "_unused_ids": [44444444, 55555555]
-   }
-   ```
-
-3. After setting up a raid on your switch (See Usage below) run autoraid.py
+2. Install the dependencies:
    ```sh
-   python ./autoraid.py
+   pip install -r requirements.txt
    ```
+3. After setting up a raid on your switch (See Usage below) you can run autoraid_gui.py
+   ```sh
+   python ./autoraid_gui.py
+   ```
+4. Alternatively, you can build it using [pyinstaller](https://pypi.org/project/pyinstaller/) or [auto-py-to-exe](https://pypi.org/project/auto-py-to-exe/) with the --onedir option (--onefile is not supported for some of the libraries used). Remember to add CustomTkinter as a dependency, follow this [guide](https://github.com/TomSchimansky/CustomTkinter/wiki/Packaging) to see how to do it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,7 +140,9 @@ https://www.python.org/
 4. Make sure you're offline and right in front of the den, possibly in a place
    that can't be reached by wild Pokémon, so that when you press A the den opens.
 
-5. Run the bot. The first thing that it will do is connect you to the internet.
+5. Select from the program the desired options: ("preferential chats" and "snitch mode" are only applicable to the telegram integration. You can set up a list of chat ids that will receive the password 15 seconds before all othere ids, and with snitch mode before the raid starts a screenshot revealing the participants will be sent to all chat ids. Snitch mode can't be selected while preferential ids are enabled, so to not reveal which users have the advantage)
+
+6. Click on Run Bot to start/stop the bot, the first thing it will do is connecting to the internet in game.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -152,7 +157,8 @@ https://www.python.org/
 
 ### Aesthetic
 
-- [ ] GUI
+- [x] GUI
+- [x] executable file
 
 See the [open issues](https://github.com/MicheleBiena/autoraid/issues) for a full list of proposed features (and known issues).
 
@@ -163,6 +169,8 @@ See the [open issues](https://github.com/MicheleBiena/autoraid/issues) for a ful
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have an issue to report, please go to [open issues](https://github.com/MicheleBiena/autoraid/issues) and describe your problem. You may also add the log.txt from the bot session that encountered a problem to make it more clear.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
