@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import json
 import os
+from pathlib import Path
 
 padding = 20
 
@@ -29,7 +30,7 @@ class Settings(ctk.CTkFrame):
             "telegram_chat_ids": [33333, 44444],
         }
 
-        self.config_file = "Autoraid.Windows\\config.json"
+        self.config_file = Path("Autoraid.Windows/config.json")
         if os.path.exists(self.config_file):
             with open(self.config_file, "r") as f:
                 self.config = json.load(f)

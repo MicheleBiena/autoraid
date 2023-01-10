@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import os
-
+from pathlib import Path
 
 class Bot(ctk.CTkFrame):
     def __init__(self, parent, callback, *args, **kwargs):
@@ -19,7 +19,7 @@ class Bot(ctk.CTkFrame):
         self.fields.grid(row=1, column=0, padx=10, pady=10)
 
     def button_callback(self):
-        configs = "Autoraid.Windows\\config.json"
+        configs = Path("Autoraid.Windows/config.json")
         if os.path.exists(configs):
             if self.bot_stopped:
                 self.bot_stopped = False
