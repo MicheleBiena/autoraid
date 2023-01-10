@@ -108,6 +108,7 @@ def quitGame(s, log):
 
 def enterGame(s, log):
     log.insert_text("Restarting the game\n")
+    sendCommand(s, "press L")  # deactivate Edizon overlay
     click(s, "A")
     sleep(0.2)
     click(s, "A")
@@ -120,7 +121,8 @@ def enterGame(s, log):
     click(s, "A")
     sleep(1.3)
     click(s, "A")
-    sleep(1.3)
+    sleep(3)
+    sendCommand(s, "release L")
 
 
 def connect(s, alert_data, log):

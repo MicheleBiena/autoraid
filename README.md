@@ -90,18 +90,17 @@
 
 ## Getting Started
 
-Install sysbot-base on your switch, you can find it on https://github.com/olliz0r/sys-botbase
+Install [sysbot-base](https://github.com/olliz0r/sys-botbase) and [ldn-mitm](https://github.com/spacemeowx2/ldn_mitm/releases/tag/v1.14.0) (required to control your switch when the game is closed) on your switch. Remember that ldn-mitm could block lan play, so read its github page carefully.
 
 ### Prerequisites
 
-Install Python
-https://www.python.org/
+Install [Python](https://www.python.org/) and set its install location on PATH environment variable. (You can do it automatically while installing)
 
 ### Installing
 
 1. Download the .zip file from the release page.
 
-2. Run install.bat to install the dependencies. If you get an error you may want to add pip to your environment variables.
+2. Run install.bat to install the dependencies. If you get an error check again your installation of Python and the content of the PATH. Remember to restart your PC after updating path.
 
 3. Run autoraid.exe
 
@@ -130,6 +129,7 @@ https://www.python.org/
 ## Usage
 
 1. Deactivate autosave on your game, and set text speed to Fast.
+   If you're using any Edizon cheat remember to disable them during the game startup by keeping L pressed while selecting the game and the profile.
 
 2. Find a Tera Raid that you would like to host, and stand in front of it.
 
