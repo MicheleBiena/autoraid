@@ -6,7 +6,9 @@ import json
 from Core import telegram_handler as tel
 from Core import discord_handler as disc
 
-with open("Autoraid.Windows\\Core\\ram_pointers.json") as file:
+from pathlib import Path
+
+with open(Path("Autoraid.Windows/Core/ram_pointers.json")) as file:
     pointers = json.load(file)
 
 # RAM CHECK
@@ -30,16 +32,16 @@ def screenshot(s):
     screen = binascii.unhexlify(totalData)
 
     image = Image.open(BytesIO(screen))
-    image.save(("Autoraid.Windows\\Core\\image.jpg"), "JPEG")
+    image.save(Path("Autoraid.Windows/Core/image.jpg"), "JPEG")
 
 
 # IMAGE PROCESSING
 
 
 def cropScreenshot():
-    image = Image.open("Autoraid.Windows\\Core\\image.jpg")
+    image = Image.open(Path("Autoraid.Windows/Core/image.jpg"))
     cropped = image.crop((180, 360, 650, 630))
-    cropped.save("Autoraid.Windows\\Core\\image.jpg")
+    cropped.save(Path("Autoraid.Windows/Core/image.jpg"))
 
 
 # ALERTS HANDLING

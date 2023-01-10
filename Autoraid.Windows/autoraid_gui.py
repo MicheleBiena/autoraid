@@ -4,6 +4,7 @@ import customtkinter as ctk
 import os
 import json
 import datetime
+from pathlib import Path
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
@@ -18,7 +19,7 @@ class MainWindow(ctk.CTk):
         # change icon and title
         self.wm_title("Autoraid")
         self.center_window(1200, 640)
-        self.iconbitmap("Autoraid.Windows\\orthworm.ico")
+        self.iconbitmap(Path("Autoraid.Windows/orthworm.ico"))
         self.protocol("WM_DELETE_WINDOW", self.save_and_exit)
 
         # create a 1x2 grid system
@@ -52,7 +53,7 @@ class MainWindow(ctk.CTk):
 
     def start_stop_bot(self):
         config = {}
-        config_file = "Autoraid.Windows\\config.json"
+        config_file = Path("Autoraid.Windows/config.json")
         if os.path.exists(config_file):
             with open(config_file, "r") as f:
                 config = json.load(f)
@@ -88,7 +89,7 @@ class MainWindow(ctk.CTk):
         file_name = now.strftime("%d_%m_%H_%M.txt")
         if not os.path.exists("Logs"):
             os.makedirs("Logs")
-        with open("Logs\\" + file_name, "w") as f:
+        with open(Path("Logs", file_name), "w") as f:
             f.write(content)
 
         self.destroy()

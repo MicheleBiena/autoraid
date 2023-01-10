@@ -1,6 +1,7 @@
 import telebot
 from Core import config_loader as conf_load
 from time import sleep
+from pathlib import Path
 
 # TELEGRAM SETUP
 bot = telebot.TeleBot(conf_load.config.get("telegram_bot_token", ""))
@@ -19,7 +20,7 @@ def send_password(raid_pokemon, extra_info, log, preferentials):
 
 # sends a telegram message with a screenshot of the raid party screen
 def send_snitch(messageList, log):
-    with open("Autoraid.Windows\\Core\\image.jpg", "rb") as f:
+    with open(Path("Autoraid.Windows/Core/image.jpg"), "rb") as f:
         media = telebot.types.InputMediaPhoto(f, caption=SNITCH_MODE_CAPTION)
         log.insert_text("Sending snitches to telegram chats...\n")
         for chat_id, message_id in messageList.items():
@@ -34,11 +35,11 @@ def send_telegram_image(details, log, preferentials):
     if len(conf_load.config["telegram_preferential_ids"]) > 0 and preferentials is True:
         log.insert_text("Sending password to preferential contacts...\n")
         for pref in conf_load.config["telegram_preferential_ids"]:
-            with open("Autoraid.Windows\\Core\\image.jpg", "rb") as f:
+            with open(Path("Autoraid.Windows/Core/image.jpg"), "rb") as f:
                 bot.send_photo(pref, f, caption=details)
         sleep(15)
     messageList = {}
-    with open("Autoraid.Windows\\Core\\image.jpg", "rb") as f:
+    with open(Path("Autoraid.Windows/Core/image.jpg"), "rb") as f:
         log.insert_text("Sending password to telegram chats...\n")
         for id in conf_load.config["telegram_chat_ids"]:
             message = bot.send_photo(id, f, caption=details)

@@ -1,5 +1,6 @@
 from Core import config_loader as conf_load
 from discord_webhook import DiscordEmbed, DiscordWebhook
+from pathlib import Path
 
 # DISCORD WEBHOOK SETUP
 webhook = DiscordWebhook(conf_load.config.get("discord_webhook_url", ""))
@@ -17,7 +18,7 @@ embed = DiscordEmbed(
 def send_password(raid_pokemon, extra_info, log):
     log.insert_text("Sending password to discord webhook...\n")
     # preparing the screenshot file
-    with open("Autoraid.Windows\\Core\\image.jpg", "rb") as f:
+    with open(Path("Autoraid.Windows/Core/image.jpg"), "rb") as f:
         webhook.add_file(file=f.read(), filename="image.jpg")
     # compiling embed fields
     embed.set_title(raid_pokemon)
