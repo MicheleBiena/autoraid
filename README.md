@@ -199,6 +199,7 @@ Project Link: [https://github.com/MicheleBiena/autoraid](https://github.com/Mich
 
 - [olliz0r](https://github.com/olliz0r/) for [Sysbot-base](https://github.com/olliz0r/sys-botbase), on which this program relies on
 - [kwsch](https://github.com/kwsch), [Lusamine](https://github.com/Lusamine), [Archit Date](https://github.com/architdate), [LegoFigure11](https://github.com/LegoFigure11) and all those who contributed to [Sysbot.NET](https://github.com/kwsch/SysBot.NET) and [PkHex](https://github.com/kwsch/PKHeX) for all the ram byte offsets and pointer that make this bot possible.
+- [jtszalay](https://github.com/jtszalay) for integration with non Windows machines.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
