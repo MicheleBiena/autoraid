@@ -150,6 +150,11 @@ Install [Python](https://www.python.org/) and set its install location on PATH e
 
 ## Roadmap
 
+### General
+
+- [ ] Ban List for Abusers
+- [ ] RaidCrawler Integration
+
 ### Telegram Integration
 
 - [x] Priority Queue
